@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier!{% endblock %}
+
+{% block content %}
+
+<h3>Mon panier</h3>
+{% if cart|length> 0 %}
+ <table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Produit</th>
+      <th scope="col"></th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Total</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% set total = null %}
+  {% for produit in cart %}
+  <tr>
+      <th>
+      <img src ="/uploads/{{produit.produit.ullistration }}"alt = "{{ produit.produit.nom}}" height = "50px"><br>
+     
+      </th>
+      <td> 
+      {{ produit.produit.nom }}<br>
+
+      <small>{{ produit.produit.sousTitre }}</small>
+       </td>
+     
+      <td> 
+         <a href ="{{path('decrease_to_cart',{'id': produit.produit.id })}}">
+         <img src = "{{asset('assets/img/minus.png')}}" height = "12px" alt = "Retirer">
+         </a>
+         x{{ produit.quantity }}
+         <a href ="{{path('add_to_cart',{'id': produit.produit.id })}}"> 
+         <img src = "{{asset('assets/img/pls.png')}}" height = "12px" alt = "Ajouter">
+         </a>
+        
+      </td>
+
+      <td>{{(produit.produit.prix  /100)| number_format(2) }}€</td>
+
+      <td>{{((produit.produit.prix * produit.quantity)/100)| number_format(2) }}€</td>
+
+      <td>
+         <a href ="{{path('delete_to_cart',{ 'id': produit.produit.id })}}">
+             <img src = "{{asset('assets/img/delete.png')}}" height = "12px" alt = "supprimer">
+         </a>
+      </td>
+
+  </tr>
+  {% set total =  total + ( produit.produit.prix * produit.quantity) %}
+  {% endfor %}
+  </tbody>
+  </table>
+  <div class ="text-right">
+    <b> Nombre de produits: </b>{{ cart |length }}<br>
+    <b>Total: </b>{{(total /100)| number_format(2)}}€<br>
+    <a href = "{{path('order')}}" class ="btn btn-success btn-block">Valider mon panier</a>
+  </div>
+  {% else %}
+  <hr>
+  <b> Votre panier est vide!</b>
+  {% endif %}
+  {% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ produit.nom }}{% endblock %}
+
+{% block content %}
+
+<div class ="row">
+  <div class ="col-md-5">
+     <img src= "/uploads/{{produit.ullistration}}"alt ="{{ produit.nom }}" class="img-fluid">
+  </div>
+  <div class= "col-md-7 my-auto">
+    <h3 class="titre3"> {{ produit.nom }} </h3>
+    <p>{{produit.sousTitre}}</p>
+    <span class = "prix-unique">{{(produit.prix /100)| number_format(2) }}€</span>
+    <hr>
+    <p>
+     {{ produit.description }}
+    </p>
+    <a href= "{{path('add_to_cart', {'id':  produit.id})}}" class="btn btn-primary">Ajouter au panier</a>
+  </div>
+</div>
+
+
+
+{% endblock %}

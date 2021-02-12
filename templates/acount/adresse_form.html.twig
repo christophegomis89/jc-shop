@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} ajaouter une adresse {% endblock %}
+
+{% block content %}
+<h1> Gérer mes adresses </h1>
+ <br>
+ {{ form_start(form) }}
+   <div class = "row">
+      <div class= "col-md-12">{{form_row(form.nomAdresse) }}</div>
+      <div class= "col-md-6">{{form_row(form.nom) }}</div>
+      <div class= "col-md-6">{{ form_row(form.prenom) }}</div>
+      <div class= "col-md-6">{{ form_row(form.entreprise) }}</div>
+      <div class= "col-md-6">{{ form_row(form.adresse) }}</div>
+      <div class= "col-md-6">{{ form_row(form.codePostal) }}</div>
+      <div class= "col-md-6">{{ form_row(form.ville) }}</div>
+      <div class= "col-md-6">{{ form_row(form.pays) }}</div>
+      <div class= "col-md-6">{{ form_row(form.telephone) }}</div>
+     
+   </div>
+
+ {{ form_end(form)}}
+{# <a href ="{{path('acount_adresse')}}">Retour!</a> #}
+  <hr>
+ 
+{% endblock %}

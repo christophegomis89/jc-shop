@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Echec de paiement  de la commande KinkiHair{% endblock %}
+
+{% block content %}
+
+  <h2> Echec de paiement </h2>
+  <p> 
+    
+    Bonjour <strong>{{order.user.prenom}} {{order.user.nom}}</strong>,<br/><br/>
+    Désolé votre paiement n°<strong>{{order.reference}}</strong>a échoué !</br>
+    Un email d'echec vient de vous être envoyé à l'adresse <strong>{{order.user.email}}</strong>
+    <hr>
+    
+  </p>
+  <a href = "{{path('order')}}" class = "btn btn-success">Réessayer le paiement</a>
+{% endblock %}
