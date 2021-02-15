@@ -64,3 +64,6 @@ body{
     padding: 20px;
     margin-top: 41px;
 }
+.produit-item img{
+    width: 50px;
+}
