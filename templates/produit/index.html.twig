@@ -1,28 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Boutique{% endblock %}
+{% block title %}Boutique
+{% endblock %}
 
 {% block content %}
-<div class ="row">
-    <div class = "col-md-3">
-      <h3>Filtrer</h3>
-      {{ form(form) }}
+	<div class="row">
+		<div class="col-md-3">
+			<h3>Filtrer</h3>
+			{{ form(form) }}
 
-    </div>
-    <div class = "col-md-9">
-      <h3> Nos Produits </h3>
-   <div class ="row">
-    {% for produit in produits %}
-       <div class="col-md-4">
-           <div class ="produit-item text-center">
-             <a href ="{{ path('produit', {'slug':produit.slug })}}"><img src= "/uploads/{{produit.ullistration}}"alt ="{{ produit.nom }}" class="img-fluid"></a>
-               <h5>{{ produit.nom }}</h5>
-                <span class ="sousTitre"> {{ produit.sousTitre }} </span>
-                <span class = "prix"> {{(produit.prix /100)| number_format(2) }}€</span>
-           </div>
-       </div>
-    {% endfor %}
-   </div>
-   </div>
-  </div>
-    {% endblock %}
+			</div>
+			<div class="col-md-9">
+				<h3>
+					Nos Produits
+				</h3>
+				<div class="row produit-container">
+					{% for produit in produits %}
+						<div class="col-md-4">
+							{% include 'produit/single_produit.html.twig' %}
+						</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

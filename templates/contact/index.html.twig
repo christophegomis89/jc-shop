@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter!{% endblock %}
+
+{% block content %}
+    <h2>Nous contacter</h2>
+    <p> N'hésitez pas à nous contacter nous prendrons le soin de vous répondre dans les meilleurs délais</p>
+    {% for message in app.flashes('notice') %}
+     <div class = "alert alert-info">{{ message }}</div>
+    {% endfor %}
+    <div class ="row">
+     <div class = "col-md-8">{{ form(form) }}</div>
+     <div class = "col-md-4">
+
+         <strong>La boutique de Jean Christophe Gomis</strong>
+         <hr>
+         <b> 06 21 45 60 56<br/>
+             13 Rue Babeuf 94500 Champigny sur Marne<br/>
+             christophegomis89@gmail.com</b>
+     </div>
+  </div>
+
+{% endblock %}

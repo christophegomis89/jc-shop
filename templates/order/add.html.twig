@@ -26,7 +26,7 @@
           <div class = "form-check">
             {{carrier.nom}}</br>
             {{carrier.description}}</br>
-            {{carrier.prix| number_format(2)}}€
+            {{((carrier.prix)/100)|number_format(2)}}€
           </div>
                         
         </div>

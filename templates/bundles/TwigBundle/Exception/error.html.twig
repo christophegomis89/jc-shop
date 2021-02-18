@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable {% endblock %}
+
+{% block content %}
+<div class = "block-small">
+  <h2> Page introuvable </h2>
+  <p> Cette page n'est pas disponible,vérifiez l'orthographe ou veuillez réessayer ultérieuremnet!</p>
+  <a href = "{{path('gomis')}}" class = "btn btn-info">Retour à l'accueil</a>
+</div>
+
+{% endblock %}

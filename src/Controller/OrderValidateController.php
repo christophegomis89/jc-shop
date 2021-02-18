@@ -29,10 +29,10 @@ class OrderValidateController extends AbstractController
             return $this->redirectToRoute('gomis');
         }
        
-        if(!$order->getIsPaid()){
+        if($order->getState() == 0){
         //  vider la session 'cart'
         $cart->remove();
-         $order->setIsPaid(1);
+         $order->setState(1);
          $this->em->flush();
         //Envoyer un mail au client pour lui connfirmer sa commande
         }
